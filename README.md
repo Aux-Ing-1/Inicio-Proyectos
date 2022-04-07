@@ -1,6 +1,18 @@
 # ¿Cómo empezar sus proyectos?
 Instrucciones básicas para empezar sus proyectos, recopilando lo aprendido en las auxiliares y respondiendo preguntas frecuentes.
 
+- [1. Repositorio Git](#1-repositorio-git)
+  * [1.1. Aceptar la invitación](#11-aceptar-la-invitaci-n)
+  * [1.2. Clonar el repositorio en local](#12-clonar-el-repositorio-en-local)
+  * [1.3. Probar el repositorio](#13-probar-el-repositorio)
+- [2. Ambiente virtual](#2-ambiente-virtual)
+  * [2.1. ¿Qué es un ambiente virtual?](#21--qu--es-un-ambiente-virtual-)
+  * [2.2. Crear el ambiente virtual](#22-crear-el-ambiente-virtual)
+  * [2.3. Activar el ambiente virtual](#23-activar-el-ambiente-virtual)
+  * [2.4. Instalar Django en el ambiente](#24-instalar-django-en-el-ambiente)
+  * [2.5. requirements.txt](#25-requirementstxt)
+- [3. Proyecto de Django](#3-proyecto-de-django)
+
 ## 1. Repositorio Git
 ### 1.1. Aceptar la invitación
 Lo primero que deben hacer será unirse al equipo que preparamos para ustedes en la [organización de Github](https://github.com/DCC-CC4401) de este ramo. La invitación les debería haber llegado por correo, usando los usuarios que indicaron en el formulario que respondieron a inicio de semestre. Si no tienen la invitación o se equivocaron de usuario, consulten con sus auxiliares.
@@ -123,3 +135,6 @@ pip install -r requirements.txt
 Esto instalará de una vez todo lo que esté declarado en el archivo, con las versiones adecuadas.
 
 > Noten que requirements.txt es solo un archivo de texto. Pueden editarlo manualmente para cambiar el stack de librerías de su proyecto.
+
+---
+## 3. Proyecto de Django
