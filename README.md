@@ -24,7 +24,10 @@ Nota: Si su repositorio ya tiene contenido, no verán lo mismo de la imagen ante
 
 ![image](https://user-images.githubusercontent.com/22943973/162326025-3d9077b4-fac7-467b-847e-f993e8ac848c.png)
 
-Una vez clonado el repositorio, debería crearles una carpeta vacía en su computador (con una carpeta ".git" oculta). Esta carpeta ahora está conectada con el repositorio de Github. Para probar, pueden crear dentro de la carpeta un archivo de texto de nombre "README.md" con algún contenido cualquiera y pushearlo al servidor como aprendimos. Si no lo recuerdan, en resumen es:
+Una vez clonado el repositorio, debería crearles una carpeta vacía en su computador (con una carpeta ".git" oculta). Esta carpeta ahora está conectada con el repositorio de Github.
+### 1.3 Probar el repositorio
+
+ Para probar que el repositorio local está conectado con el de Github, pueden crear dentro de la carpeta un archivo de texto de nombre "README.md" con algún contenido cualquiera y pushearlo al servidor como aprendimos. Si no lo recuerdan, en resumen es:
 ```
 git add README.md
 git commit -m "First commit, add README"
