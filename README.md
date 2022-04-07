@@ -100,7 +100,7 @@ Una vez activado, en la ruta que indica tu consola se debería agregar el nombre
 
 ---
 ### 2.4. Instalar Django en el ambiente
-Teniendo activado el ambiente, podemos usar el _pip_ que viene incluído en él para instalar los paquetes que necesitemos, en particular Django. Para esto, usamos el siguiente comando:
+Teniendo activado el ambiente, podemos usar el _pip_ que viene incluído en él para instalar los paquetes que necesitemos, en particular Django. Para esto, usamos el siguiente comando (Háganlo solo si el ambiente está **activado**, fíjense que salga su nombre entre paréntesis en la ruta):
 ```
 pip install django==3.2.12
 ```
