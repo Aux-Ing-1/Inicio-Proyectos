@@ -10,7 +10,7 @@ En esta organización se encuentran los repositorios de cada grupo, sobre los qu
 ### 1.2 Clonar el repositorio en local
 Una vez aceptada la invitación, busquen su repositorio dentro de la organización y verán algo como esto:
 
-[Imagen de Quick Setup]
+![image](https://user-images.githubusercontent.com/22943973/162325845-5f77eda2-c8a3-4709-8776-370139e5ff94.png)
 
 Acá nos indican varias formas de inicializar el repo en nuestros computadores locales. La más sencilla es como lo hicimos en el auxiliar 1. Copien la URL que aparece en Quick Setup y luego en su consola local, dentro de la carpeta en que quieran tener el proyecto, escriban:
 ```
@@ -22,7 +22,7 @@ También, por su cuenta, pueden clonar usando la interfaz del editor con el que 
 
 Nota: Si su repositorio ya tiene contenido, no verán lo mismo de la imagen anterior. En su lugar, pueden obtener la URL para clonar en el siguiente menú:
 
-[Imagen de botón verde Code]
+![image](https://user-images.githubusercontent.com/22943973/162326025-3d9077b4-fac7-467b-847e-f993e8ac848c.png)
 
 Una vez clonado el repositorio, debería crearles una carpeta vacía en su computador (con una carpeta ".git" oculta). Esta carpeta ahora está conectada con el repositorio de Github. Para probar, pueden crear dentro de la carpeta un archivo de texto de nombre "README.md" con algún contenido cualquiera y pushearlo al servidor como aprendimos. Si no lo recuerdas, en resumen es:
 ```
@@ -32,4 +32,4 @@ git push
 ```
 Si todo salió bien, debería aparecer su README en el repositorio de Github, y automáticamente muestra su contenido en la descripción del repo.
 
-[Imagen README]
+![image](https://user-images.githubusercontent.com/22943973/162326079-925b7d80-34de-4b5b-8332-090a28f5b625.png)
