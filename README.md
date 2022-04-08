@@ -2,16 +2,21 @@
 Instrucciones básicas para empezar sus proyectos, recopilando lo aprendido en las auxiliares y respondiendo preguntas frecuentes.
 
 - [1. Repositorio Git](#1-repositorio-git)
-  * [1.1. Aceptar la invitación](#11-aceptar-la-invitaci-n)
+  * [1.1. Aceptar la invitación](#11-aceptar-la-invitación)
   * [1.2. Clonar el repositorio en local](#12-clonar-el-repositorio-en-local)
   * [1.3. Probar el repositorio](#13-probar-el-repositorio)
 - [2. Ambiente virtual](#2-ambiente-virtual)
-  * [2.1. ¿Qué es un ambiente virtual?](#21--qu--es-un-ambiente-virtual-)
+  * [2.1. ¿Qué es un ambiente virtual?](#21-qué-es-un-ambiente-virtual)
   * [2.2. Crear el ambiente virtual](#22-crear-el-ambiente-virtual)
   * [2.3. Activar el ambiente virtual](#23-activar-el-ambiente-virtual)
   * [2.4. Instalar Django en el ambiente](#24-instalar-django-en-el-ambiente)
   * [2.5. requirements.txt](#25-requirementstxt)
 - [3. Proyecto de Django](#3-proyecto-de-django)
+  * [3.1. Crear el proyecto](#31-crear-el-proyecto)
+  * [3.2. Crear una "app"](#32-crear-una-app)
+  * [3.3. Correr el proyecto](#33-correr-el-proyecto)
+  * [3.4. Admin de Django](#34-admin-de-django)
+  * [3.5. Resumen de Django](#35-resumen-de-django)
 
 ## 1. Repositorio Git
 ### 1.1. Aceptar la invitación
@@ -139,4 +144,167 @@ Esto instalará de una vez todo lo que esté declarado en el archivo, con las ve
 
 ---
 ## 3. Proyecto de Django
-Teniendo nuestro repositorio enlazado y nuestro ambiente virtual activado
+### 3.1. Crear el proyecto
+Teniendo nuestro repositorio enlazado y nuestro ambiente virtual activado, podemos crear nuestro proyecto.
+
+**OJO: Basta con que UNA persona inicialice el proyecto de Django.** Luego lo pushea al repo y los demás hacen pull de eso para tenerlo en su computador.
+
+Para empezar, **[con el ambiente activado]**, usamos el siguiente comando:
+```
+django-admin startproject [nombre_del_proyecto]
+```
+> El nombre debe usar solo minúsculas y guión bajo _. 
+
+Esto creará la siguiente estructura en su sistema:
+```
+[Nombre-Del-Repositorio]
+|── [nombre_del_proyecto]
+|   |── __init__.py
+|   |── asgi.py
+|   |── settings.py
+|   |── urls.py
+|   |── wsgi.py
+|── manage.py
+```
+
+---
+### 3.2. Crear una "app"
+Recordemos que dentro de un proyecto de Django podemos tener distintas _apps_. Una app, a diferencia de lo que el nombre sugiere, no es necesariamente una aplicación completa, sino solamente una forma de modularizar distintas secciones de su proyecto.
+
+Podrían tener todo su proyecto en una sola app, o separarlo en distintos módulos para mejorar la organización de su código. Por ejemplo, si su proyecto fuera U-Cursos, podrían tener una app para `usuarios`, otra para `cursos`, otra para `foro`, o una para `horario`. La división puede ser en términos de funcionalidad, de datos, de ubicación en el sitio web, de equipo de trabajo, o de cualquier criterio que ustedes estimen conveniente para organizar. Consideren las _apps_ más como _módulos_ que como _aplicaciones_.
+
+Dicho esto, deberán crear al menos una app, de la siguiente forma:
+```
+cd [nombre_del_proyecto]    <--- Entrar a la carpeta del proyecto
+python manage.py startapp [nombre_de_app]
+```
+
+Y su estructura quedará así:
+```
+[Nombre-Del-Repositorio]
+|── [nombre_del_proyecto]
+|   |── ...
+|── [nombre_de_app]
+|   |── __init__.py
+|   |── admin.py
+|   |── apps.py
+|   |── models.py
+|   |── tests.py
+|   |── views.py
+|── manage.py
+```
+
+Una vez creada la app, deberán registrarla como parte del proyecto buscando y agregando lo siguiente en `settings.py`:
+``` python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    '[nombre_de_app]',   # <--- Esto es lo que deben agregar
+]
+```
+
+---
+
+### 3.3. Correr el proyecto
+Antes de echar a andar el proyecto es necesario aplicar la primera capa de _migraciones_. Para esto hacemos lo siguiente:
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+> Más info sobre migraciones [en el 3.5.2](#352-modelos-y-migraciones).
+
+Al hacer eso deberían aplicarse varias migraciones, con un **OK** al final de cada una.
+
+Luego, para correr el servidor deben hacer:
+```
+python manage.py runserver
+```
+
+Si todo salió bien, deberías ver el mensaje:
+```
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+```
+Y si ingresas a http://127.0.0.1:8000/ (equivalente a http://localhost:8000/), deberías ver el mensaje de bienvenida de Django.
+
+![image](https://user-images.githubusercontent.com/22943973/162346808-5e48e838-54d7-4c28-aeaf-b9d831d03801.png)
+
+---
+### 3.4. Admin de Django
+Django viene con una interfaz de administración que permite gestionar la base de datos visualmente. Esto es muy útil cuando están construyendo su aplicación y aún no tienen implementada la creación de elementos. De esta forma, pueden crear, modificar y borrar directamente sus datos para testear sus interfaces.
+
+![image](https://user-images.githubusercontent.com/22943973/162347670-46e7d087-317b-47b4-a155-cceef7c9b017.png)
+
+Para poder usarla, debes _registrar_ los modelos que quieres que aparezcan en ella. Para esto deben editar el archivo `admin.py` de cada app, y agregar los models que quieran gestionar en el admin.
+```
+from django.contrib import admin
+from [nombre_de_app].models import [NombreModelo]
+
+# Register your models here.
+admin.site.register([NombreModelo])
+```
+Pueden hacerlo con todas las apps y modelos que estimen necesario.
+
+Para poder ingresar al admin es necesario tener un usuario con permisos de admin. Dado que no tenemos interfaz para crear usuarios, lo hacemos por consola:
+```
+python manage.py createsuperuser
+```
+Les pedirá un username, un correo y una password. Dado que todo esto está local en su computador y no hay riesgo de hackeo, les recomendamos usar algo sencillo como user: admin, pass: admin. El correo puede ser vacío o cualquier cosa, no tiene ninguna utilidad por el momento y no se enviará nada. Es posible que les tire warnings por la seguridad de la contraseña, pero puede hacerse un bypass (saltárselo) de todas formas.
+
+Con este usuario podrán ingresar al admin. Desde ahí pueden crear otros usuarios no-admin para testear su página.
+
+> Recuerden que todo esto es local. Cada persona en su computador tendrá sus propios usuarios y data. Por default esto se guarda en db.sqlite3, archivo que idealmente NO deberían subir al repositorio.
+
+---
+### 3.5. Resumen de Django
+Ahora ya tienen todo listo para empezar su proyecto. Si todavía no saben bien como proseguir, les recomendamos fuertemente ver el video de la Auxiliar 2 y hacer [la actividad](https://github.com/Aux-Ing-1/Auxiliar2-Django), donde pueden aprender cómo funciona la estructura de Django con un ejemplo concreto.
+
+De todas formas, les dejamos un pequeño resumen de la teoría tras Django:
+#### 3.5.1. Estructura
+Los archivos más importantes son:
+- `[proyecto]/manage.py`: Este es el archivo con el que se corren los comandos del proyecto, como `runserver`, `createsuperuser`, `migrate`, etc.
+- `[proyecto]/[proyecto]/settings.py`: Define todas las variables de configuración del proyecto. Tengan cuidado al modificarlo.
+- `[proyecto]/[proyecto]/urls.py`: Asigna qué views o funciones se llamáran para cada URL del sitio.
+- `[proyecto]/[app]/admin.py`: Aquí se registran los modelos que quieren gestionar a través del admin de Django.
+- `[proyecto]/[app]/models.py`: Modelos de la base de datos, en forma de clases de Python.
+- `[proyecto]/[app]/urls.py`: Dentro de una app también pueden haber URLs específicas de esa app. Éstas deben importarse en el `urls.py` a nivel de proyecto.
+- `[proyecto]/[app]/views.py`: Funciones de Python que serán llamadas al recibir requests a las URLs asignadas.
+
+Los archivos `__init__.py` son necesarios para que Python reconozca los módulos. Los archivos `asgi.py` y `wsgi.py` no son relevantes a este curso. El archivo `test.py` tampoco, pues no se esperan tests unitarios.
+#### 3.5.2. Modelos y migraciones
+Los models son una representación en Python de una base de datos. Con ellos, no es necesario hacer consultas de tipo _SELECT FROM WHERE_, sino que se usa el mismo lenguaje Python para consultar. Haciendo la analogía, cada model es una tabla, y cada columna de esa tabla es un _field_ o _campo_ en Django. Existen varios tipos de fields, como `IntegerField`, `DatetimeField`, `CharField` para tipos primitivos, y otros como `ForeignKey` y `ManyToManyField`, que representan llaves foráneas de la base de datos, para relacionar tablas entre sí. Pueden leer [la documentación](https://docs.djangoproject.com/en/3.2/ref/models/fields/) para saber más sobre los fields.
+
+Las migraciones son una especie de control de versiones (como git), pero para la base de datos. Cada vez que hacen un cambio en la definición de un modelo (e.g. agregar un campo `profesor` al modelo `Curso`), es necesario crear una nueva "migración" usando `python manage.py makemigrations`, y luego para aplicar las migraciones creadas se debe usar `python manage.py migrate`. 
+
+Considera que `makemigrations` es análogo en git a hacer `add` para preparar los cambios, y `migrate` es como confirmar los cambios con un `commit`.
+
+#### 3.5.3. Views
+Las views o vistas, a diferencia de lo que podría indicar el nombre, no son la parte visual del proyecto. Una view en Django es un controlador, la parte funcional del sistema. Acá es donde definen las funciones en Python que serán llamadas por el servidor cuando lleguen las requests de los clientes. Cada view debe siempre retornar algún tipo de HTTP Response, que es la respuesta que se enviará de vuelta al cliente. Esta respuesta puede ser solo data cruda (en el caso de un servidor API), pero en nuestro caso la respuesta implica renderizar un _template_, llenarlo con la data y enviar ya construida la página HTML completa que se mostrará al usuario.
+
+Todo lo que ocurre en las views ocurre en el **backend**, es decir, en el computador que está corriendo el servidor de Django, por lo que acá puedes implementar cualquier funcionalidad que podrías hacer con el lenguaje Python, con la capacidad de tu servidor (tu computador).
+
+#### 3.5.4. Templates
+Los templates sí son la parte visual de la aplicación. Son la forma en la que Django, un framework de backend/servidor, también puede servir como frontend. Están hechos en HTML (+ CSS y JavaScript), pero se mezclan con una sintáxis particular de Django (`{% así %}`) para poder incrustar data dinámicamente, construir la página y enviarla al cliente.
+
+Los templates pueden incluir código JavaScript. Recuerden que JS es un lenguaje de cliente, por lo que se ejecuta **en el computador del usuario** y no en el servidor, con todas las limitaciones que ello implica.
+
+#### 3.5.5. URLs
+En las URLs se define qué funciones (views) se llamarán según qué enlace está solicitando el usuario. Éstas pueden ser dinámicas, por ejemplo, la URL `https://www.u-cursos.cl/ingenieria/2022/1/CC4401/1/integrantes` le entrega como argumento dinámico a la view que estamos solicitando `año=2022`, `semestre=1`, `curso=CC4401`, `sección=1`. Luego la view puede usar estos argumentos para consultar la base de datos y filtrar los integrantes, para enviar la respuesta de vuelta.
+
+#### 3.5.6. Flujo
+Finalmente, el flujo general de Django es el siguiente:
+- Usuario ingresa a una página, mediante una **URL**.
+- El servidor recibe la solicitud y chequea qué **view** le corresponde a dicha URL.
+- La **view** procesa la solicitud y realiza algún tipo de operación funcional con la data.
+- La **view** puede consultar la base de datos a través de los **models**.
+- La **view** incrusta los datos obtenidos/procesados en un **template** en HTML.
+- Se envía una respuesta al cliente con la página HTML ya construida para mostrársela.
+
+---
+Esperamos que este documento les sirva como guía para sus proyectos. Cualquier otra duda, problema o sugerencia respecto a la guía, háganselo saber a sus auxiliares.
+
+¡Éxito! :D
