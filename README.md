@@ -78,7 +78,7 @@ el parámetro `-m venv` es para indicar que estamos usando el _módulo venv_, y 
 
 ---
 ### 2.3. Activar el ambiente virtual
-Una vez creado, debemos **activarlo**. Esto significa decirle a la consola que, al usar e instalar paquetes de Python, debe priorizar nuestro ambiente virtual en su PATH (i.e. las ubicaciones donde buscará los comandos que usamos).
+Una vez creado, debemos **activarlo**. Esto significa decirle a la consola que, al usar e instalar paquetes de Python, debe priorizar nuestro ambiente virtual en su PATH (i.e. las ubicaciones donde buscará los comandos que usamos). **IMPORTANTE: Deben activar el ambiente cada vez que vuelvan a abrir la consola.**
 
 La forma de activarlo cambia según tu sistema operativo y/o consola.
 
@@ -97,6 +97,7 @@ Una vez activado, en la ruta que indica tu consola se debería agregar el nombre
 ```
 (myenv) C:\Documentos\Ingenieria1\Inicio-Proyectos>
 ```
+> Igual que con git, algunos IDE o editores tienen su propia interfaz para manejar ambientes. Tampoco cubriremos eso en este tutorial.
 
 ---
 ### 2.4. Instalar Django en el ambiente
@@ -138,3 +139,4 @@ Esto instalará de una vez todo lo que esté declarado en el archivo, con las ve
 
 ---
 ## 3. Proyecto de Django
+Teniendo nuestro repositorio enlazado y nuestro ambiente virtual activado
