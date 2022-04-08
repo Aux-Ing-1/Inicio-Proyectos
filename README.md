@@ -270,7 +270,7 @@ De todas formas, les dejamos un pequeño resumen de la teoría tras Django:
 Los archivos más importantes son:
 - `[proyecto]/manage.py`: Este es el archivo con el que se corren los comandos del proyecto, como `runserver`, `createsuperuser`, `migrate`, etc.
 - `[proyecto]/[proyecto]/settings.py`: Define todas las variables de configuración del proyecto. Tengan cuidado al modificarlo.
-- `[proyecto]/[proyecto]/urls.py`: Asigna qué views o funciones se llamáran para cada URL del sitio.
+- `[proyecto]/[proyecto]/urls.py`: Asigna qué views o funciones se llamarán para cada URL del sitio.
 - `[proyecto]/[app]/admin.py`: Aquí se registran los modelos que quieren gestionar a través del admin de Django.
 - `[proyecto]/[app]/models.py`: Modelos de la base de datos, en forma de clases de Python.
 - `[proyecto]/[app]/urls.py`: Dentro de una app también pueden haber URLs específicas de esa app. Éstas deben importarse en el `urls.py` a nivel de proyecto.
