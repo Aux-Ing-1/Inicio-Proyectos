@@ -240,7 +240,7 @@ Django viene con una interfaz de administración que permite gestionar la base d
 ![image](https://user-images.githubusercontent.com/22943973/162347670-46e7d087-317b-47b4-a155-cceef7c9b017.png)
 
 Para poder usarla, debes _registrar_ los modelos que quieres que aparezcan en ella. Para esto deben editar el archivo `admin.py` de cada app, y agregar los models que quieran gestionar en el admin.
-```
+``` python
 from django.contrib import admin
 from [nombre_de_app].models import [NombreModelo]
 
