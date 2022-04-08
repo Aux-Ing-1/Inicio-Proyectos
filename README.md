@@ -1,7 +1,7 @@
 # ¿Cómo empezar sus proyectos?
 Instrucciones básicas para empezar sus proyectos, recopilando lo aprendido en las auxiliares y respondiendo preguntas frecuentes.
 # No es necesario leer todo el documento. La idea es que les sirva como guía por si se pierden.
-💡 Si ya saben lo que están haciendo, pueden ver la [versión corta](https://github.com/Aux-Ing-1/Inicio-Proyectos/blob/main/tldr.md).
+### 💡 Si ya saben lo que están haciendo, pueden ver la [versión corta](https://github.com/Aux-Ing-1/Inicio-Proyectos/blob/main/tldr.md).
 
 - [1. Repositorio Git](#1-repositorio-git)
   * [1.1. Aceptar la invitación](#11-aceptar-la-invitación)
