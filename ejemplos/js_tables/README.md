@@ -3,7 +3,7 @@ En este ejemplo veremos **dos formas** de ordenar datos en una tabla ¡Y de form
 
 Planteamos dos ejemplos: una forma utilizará un código hecho "a mano" por sus gentiles auxiliares (en realidad lo sacamos de una página web), y para la otra forma utilizaremos un framework (DataTables) que agrega mayor usabilidad a la tabla, como flechas que indican el orden (ascendente o descendente) de los valores, buscadores, paginamiento, ¡y más!
 
-Para clonar este repo debes ir a [la raíz del proyecto](https://github.com/Aux-Ing-1/Inicio-Proyectos).
+Para usar este repo revisa las instrucciones en [la Wiki](https://github.com/Aux-Ing-1/Inicio-Proyectos/wiki/JavaScript#c%C3%B3mo-usar-los-ejemplos).
 
 ## Sin framework
 ¿Cuáles son las ventajas?
