@@ -1,0 +1,1 @@
+En esta carpeta están los ejemplos de JavaScript. Para usarlos revisa la página de [JavaScript en la wiki](https://github.com/Aux-Ing-1/Inicio-Proyectos/wiki/JavaScript).
